@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .box .chart {
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: center;
+            width: 110px;
+            height: 110px;
+        }
+
+        .box canvas {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .box {
+            width: 25%;
+            float: left;
+            text-align: center;
+        }
+
+        k
+    </style>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>NeuroSpect</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+</head>
+<body style="background-color: #18D4E8;">
+
+    <div class="row">
+        <div class="col-sm">
+            <div style="font-family: Bahnschrift; font-size:40pt; color: #000000">NEUROSPECT</div>
+        </div>
+        <div class="col-sm" class="float-right">
+            <!--<a href="https://www.facebook.com/sherzaimd"><img style="width: 45px" alt="Facebook" src="Images/facebook.png" /></a>
+    <a href="https://www.instagram.com/sherzaimd"><img style="width: 45px" alt="Instagram" src="Images/instagram.png" /></a>-->
+            <a href="Register.html"><button type="button" class="btn btn-danger float-right" style="border-radius: 1px;">Register</button></a>
+            <a href="Login.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Log In</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2 style="font-family: Bahnschrift;">Progress</h2>
+        </div>
+        <div class="col">
+            <h2 style="font-family: Bahnschrift; color: #FF9519"><a href="login.html">Login?</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="box" class="col-sm">
+                Attention
+                <div id="attention" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Visuospatial
+                <div id="visuospatial" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Memory
+                <div id="memory" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Processing Speed
+                <div id="speed" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div <!-- id="unity-container" class="unity-desktop"--></div>>
+        <canvas <!-- id="unity-canvas"-->></canvas>
+        <div <!-- id="unity-loading-bar"-->>
+                <div <!-- id="unity-logo">--></div>
+                <div <!-- id="unity-progress-bar-empty"-->>
+                    <div <!-- id="unity-progress-bar-full"-->></div>
+                </div>
+            </div>
+        <div id="unity-mobile-warning">
+            This game cannot be played on a mobile device.
+        </div>
+        <!-- <div id="unity-footer">
+                    <div id="unity-webgl-logo"></div>
+                    <div id="unity-fullscreen-button"></div>
+                    <div id="unity-build-title">BrainApp</div>
+                </div>-->
+            </div>
+            <script>
+                var buildUrl = "Build";
+                var loaderUrl = buildUrl + "/NeuroSpectWebsite.loader.js";
+                var config = {
+                    dataUrl: buildUrl + "/NeuroSpectWebsite.data",
+                    frameworkUrl: buildUrl + "/NeuroSpectWebsite.framework.js",
+                    codeUrl: buildUrl + "/NeuroSpectWebsite.wasm",
+                    streamingAssetsUrl: "StreamingAssets",
+                    companyName: "DefaultCompany",
+                    productName: "BrainApp",
+                    productVersion: "1.0",
+                };
+
+                var container = document.querySelector("#unity-container");
+                var canvas = document.querySelector("#unity-canvas");
+                var loadingBar = document.querySelector("#unity-loading-bar");
+                var progressBarFull = document.querySelector("#unity-progress-bar-full");
+                var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+                var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                    container.className = "unity-mobile";
+                    config.devicePixelRatio = 1;
+                    mobileWarning.style.display = "block";
+                    setTimeout(() => {
+                        mobileWarning.style.display = "none";
+                    }, 5000);
+                } else {
+                    canvas.style.width = "960px";
+                    canvas.style.height = "600px";
+                }
+                loadingBar.style.display = "block";
+
+                var script = document.createElement("script");
+                script.src = loaderUrl;
+                script.onload = () => {
+                    createUnityInstance(canvas, config, (progress) => {
+                        progressBarFull.style.width = 100 * progress + "%";
+                    }).then((unityInstance) => {
+                        loadingBar.style.display = "none";
+                        fullscreenButton.onclick = () => {
+                            unityInstance.SetFullscreen(1);
+                        };
+                    }).catch((message) => {
+                        alert(message);
+                    });
+                };
+                document.body.appendChild(script);
+            </script>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <h2 style="font-family: Bahnschrift;">Trends for </h2>
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select an aspect
+                    </button>
+                    <ul class="dropdown-menu" role = "menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Attention</a></li>
+                        <li><a class="dropdown-item" href="#">Visuospatial</a></li>
+                        <li><a class="dropdown-item" href="#">Processing Speed</a></li>
+                        <li><a class="dropdown-item" href="#">Memory</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row" id="chartContainer">
+            <div class="col">
+                <script>
+                    window.onload = function () {
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            theme: "dark2",
+                            title: {
+                                text: "Recent Scores"
+                            },
+                            data: [{
+                                type: "line",
+                                indexLabelFontSize: 16,
+                                dataPoints: [
+                                    { label: '7/11/21', y: 0 },
+                                    { label: '7/12/21', y: 0 },
+                                    { label: '7/13/21', y: 0 },
+                                    { label: '7/14/21', y: 0 },
+                                    { label: '7/15/21', y: 0 },
+                                    { label: '7/16/21', y: 0 }
+                                ]
+                            }]
+                        });
+                        chart.render();
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <a href="index.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Play Demo Game</button></a>
+        </div>
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="jquery.easypiechart.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+        <script type="text/javascript" src="canvasjs.min.js"></script>
+
+        <script>
+            $(function () {
+                $('.chart').easyPieChart({
+                    barColor: '#FF9519',
+                    lineWidth: 8
+                })
+            })
+        </script>
+
+
+
+        <script src="behavior.js">
+        </script>
+
+
+
+    </body>
+
+    </html>
