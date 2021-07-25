@@ -39,49 +39,22 @@
         <div class="col-sm">
             <div style="font-family: Bahnschrift; font-size:40pt; color: #000000">NEUROSPECT</div>
         </div>
+        <div class="col-sm" style="margin: auto; text-align: center">
+            <h2 style="font-family: Bahnschrift; color: #FF9519"><a href="login.html">Login?</a></h2>
+        </div>
         <div class="col-sm" class="float-right">
             <!--<a href="https://www.facebook.com/sherzaimd"><img style="width: 45px" alt="Facebook" src="Images/facebook.png" /></a>
-    <a href="https://www.instagram.com/sherzaimd"><img style="width: 45px" alt="Instagram" src="Images/instagram.png" /></a>-->
+            <a href="https://www.instagram.com/sherzaimd"><img style="width: 45px" alt="Instagram" src="Images/instagram.png" /></a>-->
             <a href="Register.html"><button type="button" class="btn btn-danger float-right" style="border-radius: 1px;">Register</button></a>
             <a href="Login.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Log In</button></a>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <h2 style="font-family: Bahnschrift;">Progress</h2>
-        </div>
-        <div class="col">
-            <h2 style="font-family: Bahnschrift; color: #FF9519"><a href="login.html">Login?</a></h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="box" class="col-sm">
-                Attention
-                <div id="attention" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
-            </div>
-            <div class="box" class="col-sm">
-                Visuospatial
-                <div id="visuospatial" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
-            </div>
-            <div class="box" class="col-sm">
-                Memory
-                <div id="memory" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
-            </div>
-            <div class="box" class="col-sm">
-                Processing Speed
-                <div id="speed" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
-            </div>
-        </div>
-    </div>
 
-    <br />
 
     <div class="row">
-        <div id="unity-container" class="unity-desktop">
+        <div style="margin: auto;">
             <canvas id="unity-canvas"></canvas>
             <div id="unity-loading-bar">
-                <div id="unity-logo"></div>
                 <div id="unity-progress-bar-empty">
                     <div id="unity-progress-bar-full"></div>
                 </div>
@@ -90,9 +63,7 @@
                 WebGL builds are not supported on mobile devices.
             </div>
             <div id="unity-footer">
-                <div id="unity-webgl-logo"></div>
                 <div id="unity-fullscreen-button"></div>
-                <div id="unity-build-title">BrainApp</div>
             </div>
         </div>
         <script>
@@ -146,85 +117,114 @@
         </script>
     </div>
 
-        <br />
 
-        <div class="row">
-            <div class="col">
-                <h2 style="font-family: Bahnschrift;">Trends for </h2>
-                <div class="dropdown">
-                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select an aspect
-                    </button>
-                    <ul class="dropdown-menu" role = "menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Attention</a></li>
-                        <li><a class="dropdown-item" href="#">Visuospatial</a></li>
-                        <li><a class="dropdown-item" href="#">Processing Speed</a></li>
-                        <li><a class="dropdown-item" href="#">Memory</a></li>
-                    </ul>
-                </div>
+    <div class="row">
+        <div class="col">
+            <h2 style="font-family: Bahnschrift;">Progress</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="box" class="col-sm">
+                Attention
+                <div id="attention" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Visuospatial
+                <div id="visuospatial" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Memory
+                <div id="memory" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+            </div>
+            <div class="box" class="col-sm">
+                Processing Speed
+                <div id="speed" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
             </div>
         </div>
+    </div>
 
-        <br />
+    <br />
 
-        <div class="row" id="chartContainer">
-            <div class="col">
-                <script>
-                    window.onload = function () {
-                        var chart = new CanvasJS.Chart("chartContainer", {
-                            animationEnabled: true,
-                            theme: "dark2",
-                            title: {
-                                text: "Recent Scores"
-                            },
-                            data: [{
-                                type: "line",
-                                indexLabelFontSize: 16,
-                                dataPoints: [
-                                    { label: '7/11/21', y: 0 },
-                                    { label: '7/12/21', y: 0 },
-                                    { label: '7/13/21', y: 0 },
-                                    { label: '7/14/21', y: 0 },
-                                    { label: '7/15/21', y: 0 },
-                                    { label: '7/16/21', y: 0 }
-                                ]
-                            }]
-                        });
-                        chart.render();
-                    }
-                </script>
+    <br />
+
+    <div class="row">
+        <div class="col">
+            <h2 style="font-family: Bahnschrift;">Trends for </h2>
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select an aspect
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Attention</a></li>
+                    <li><a class="dropdown-item" href="#">Visuospatial</a></li>
+                    <li><a class="dropdown-item" href="#">Processing Speed</a></li>
+                    <li><a class="dropdown-item" href="#">Memory</a></li>
+                </ul>
             </div>
         </div>
-        <div class="row">
-            <a href="index.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Play Demo Game</button></a>
+    </div>
+
+    <br />
+
+    <div class="row" id="chartContainer">
+        <div class="col">
+            <script>
+                window.onload = function () {
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        theme: "dark2",
+                        title: {
+                            text: "Recent Scores"
+                        },
+                        data: [{
+                            type: "line",
+                            indexLabelFontSize: 16,
+                            dataPoints: [
+                                { label: '7/11/21', y: 50 },
+                                { label: '7/12/21', y: 40 },
+                                { label: '7/13/21', y: 70 },
+                                { label: '7/14/21', y: 30 },
+                                { label: '7/15/21', y: 60 },
+                                { label: '7/16/21', y: 90 }
+                            ]
+                        }]
+                    });
+                    chart.render();
+                }
+            </script>
         </div>
+    </div>
+    <div class="row">
+        <a href="index.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Play Demo Game</button></a>
+    </div>
 
 
 
 
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="jquery.easypiechart.js"></script>
-        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
-        <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="jquery.easypiechart.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
 
-        <script>
-            $(function () {
-                $('.chart').easyPieChart({
-                    barColor: '#FF9519',
-                    lineWidth: 8
-                })
+    <script>
+        $(function () {
+            $('.chart').easyPieChart({
+                barColor: '#FF9519',
+                lineWidth: 8
             })
-        </script>
+        })
+    </script>
 
 
 
-        <script src="behavior.js">
-        </script>
+    <script src="behavior.js">
+    </script>
 
 
 
-    </body>
+</body>
 
     </html>
