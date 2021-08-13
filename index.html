@@ -23,7 +23,62 @@
             text-align: center;
         }
 
-        k
+        .fade-in {
+            animation: fadeIn ease 1s;
+            -webkit-animation: fadeIn ease 1s;
+            -moz-animation: fadeIn ease 1s;
+            -o-animation: fadeIn ease 1s;
+            -ms-animation: fadeIn ease 1s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-ms-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
     </style>
 
     <meta charset="utf-8" />
@@ -35,24 +90,40 @@
 </head>
 <body style="background-color: #18D4E8;">
 
+
+
     <div class="row">
         <div class="col-sm">
             <div style="font-family: Bahnschrift; font-size:40pt; color: #000000">NEUROSPECT</div>
         </div>
-        <div class="col-sm" style="margin: auto; text-align: center">
+        <!--<div id="log-in" class="col-sm" style="margin: auto; text-align: center">
             <h2 style="font-family: Bahnschrift; color: #FF9519"><a href="login.html">Login?</a></h2>
-        </div>
+        </div>-->
         <div class="col-sm" class="float-right">
             <!--<a href="https://www.facebook.com/sherzaimd"><img style="width: 45px" alt="Facebook" src="Images/facebook.png" /></a>
-            <a href="https://www.instagram.com/sherzaimd"><img style="width: 45px" alt="Instagram" src="Images/instagram.png" /></a>-->
-            <a href="Register.html"><button type="button" class="btn btn-danger float-right" style="border-radius: 1px;">Register</button></a>
-            <a href="Login.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Log In</button></a>
+            <a href="https://www.instagram.com/sherzaimd"><img style="width: 45px" alt="Instagram" src="Images/instagram.png" /></a>
+            <a id="reg-button" href="Register.html"><button type="button" class="btn btn-danger float-right" style="border-radius: 1px;">Register</button></a>
+            <a id="log-in-button" href="Login.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Log In</button></a>-->
+            <h4 id="Welcome" class="float-right">Welcome deansherzai!</h4>
         </div>
     </div>
 
+    <!--<div class="row" id="Resources" class="row">
 
-    <div class="row">
-        <div style="margin: auto;">
+        <div class="col-sm">
+            <img style="width: 10%" src="3pttest.png" alt="Parts of the test" />
+        </div>
+
+        <div class="col-sm">
+            <h2 style="vertical-align:central">  Test your cognitive skills<br />and get tips on improvement</h2>
+            <a href="Login.html"><button class="btn btn-success">Login Here</button></a>
+        </div>
+
+
+    </div>-->
+
+    <div id="NeuroSpectGame" class="row">
+        <div id="neurospect-sub" style="margin: auto;">
             <canvas id="unity-canvas"></canvas>
             <div id="unity-loading-bar">
                 <div id="unity-progress-bar-empty">
@@ -118,28 +189,28 @@
     </div>
 
 
-    <div class="row">
+    <div id="progress-title" class="row">
         <div class="col">
             <h2 style="font-family: Bahnschrift;">Progress</h2>
         </div>
     </div>
-    <div class="row">
+    <div id="progress" class="row">
         <div class="col">
             <div class="box" class="col-sm">
                 Attention
-                <div id="attention" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+                <div id="attention" class="chart" style="font-family: Bahnschrift;"></div>
             </div>
             <div class="box" class="col-sm">
                 Visuospatial
-                <div id="visuospatial" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+                <div id="visuospatial" class="chart" style="font-family: Bahnschrift;"></div>
             </div>
             <div class="box" class="col-sm">
                 Memory
-                <div id="memory" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+                <div id="memory" class="chart" style="font-family: Bahnschrift;"></div>
             </div>
             <div class="box" class="col-sm">
                 Processing Speed
-                <div id="speed" class="chart" data-percent=0 style="font-family: Bahnschrift;">0%</div>
+                <div id="speed" class="chart" style="font-family: Bahnschrift;"></div>
             </div>
         </div>
     </div>
@@ -148,7 +219,7 @@
 
     <br />
 
-    <div class="row">
+    <div id="trend-title" class="row">
         <div class="col">
             <h2 style="font-family: Bahnschrift;">Trends for </h2>
             <div class="dropdown">
@@ -167,7 +238,7 @@
 
     <br />
 
-    <div class="row" id="chartContainer">
+    <div id="trend" class="row" id="chartContainer">
         <div class="col">
             <script>
                 window.onload = function () {
@@ -195,11 +266,6 @@
             </script>
         </div>
     </div>
-    <div class="row">
-        <a href="index.html"><button type="button" class="btn btn-success float-right" style="border-radius: 1px;">Play Demo Game</button></a>
-    </div>
-
-
 
 
 
